@@ -12,24 +12,27 @@
 <body>
     <!-- 메인 화면 -->
     <div class="main-screen" id="mainScreen">
+        <div class="main-content">
             <!-- 로고 -->
             <div class="logo-container">
                 <img src="Logo.png" alt="숫자 맞추기 게임 로고" class="logo-image">
             </div>
             
-            
-            <!-- 숫자 이미지들 - 피그마 디자인에 맞는 개별 배치 -->
-            <img src="number_img/Frame 1.png" alt="1" class="number-image" style="left: 12px; top: 419px;">
-            <img src="number_img/Frame 12.png" alt="12" class="number-image" style="left: 91px; top: 419px;">
-            <img src="number_img/Frame 25.png" alt="25" class="number-image" style="left: 170px; top: 419px;">
-            <img src="number_img/Frame 38.png" alt="38" class="number-image" style="left: 249px; top: 419px;">
-            <img src="number_img/Frame 45.png" alt="45" class="number-image" style="left: 328px; top: 419px;">
+            <!-- 숫자 이미지들 -->
+            <div class="number-images-container">
+                <img src="number_img/Frame 1.png" alt="1" class="number-image">
+                <img src="number_img/Frame 12.png" alt="12" class="number-image">
+                <img src="number_img/Frame 25.png" alt="25" class="number-image">
+                <img src="number_img/Frame 38.png" alt="38" class="number-image">
+                <img src="number_img/Frame 45.png" alt="45" class="number-image">
+            </div>
             
             <!-- 게임 시작 버튼 -->
             <div class="button-container">
                 <button class="start-button" id="startButton" onclick="startGame()">게임 시작</button>
             </div>
         </div>
+    </div>
         
         <!-- 숫자 선택 화면 -->
         <div class="number-selection-screen" id="numberSelectionScreen" style="display: none;">
