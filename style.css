@@ -1,0 +1,761 @@
+/* 기본 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 메인 화면 */
+.main-screen {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 로고 컨테이너 */
+.logo-container {
+    position: absolute;
+    left: calc(50% - 10px);
+    top: 230px;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.logo-image {
+    width: 230px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* 숫자 이미지들 */
+.number-image {
+    position: absolute;
+    width: 73px;
+    height: 73px;
+    object-fit: contain;
+    filter: drop-shadow(2px 2px 7.5px rgba(22, 22, 22, 0.25));
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.number-image:hover {
+    transform: scale(1.05);
+}
+
+/* 버튼 컨테이너 */
+.button-container {
+    position: absolute;
+    bottom: auto;
+    top: 528px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+.start-button {
+    width: 201px;
+    height: 75px;
+    background: linear-gradient(135deg, #ff6b35, #ff8c42);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 37px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 1px #ffcc00;
+    transition: all 0.3s ease;
+    position: relative;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.start-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 0px 8px 2px #ffcc00;
+}
+
+.start-button:active {
+    transform: translateY(0);
+    box-shadow: 0px 0px 3px 1px #ffcc00;
+}
+
+/* 숫자 선택 화면 */
+.number-selection-screen {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-color: #f0f0f0;
+    overflow: hidden;
+}
+
+.selection-title {
+    position: absolute;
+    top: 305px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #ff941a;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.number-selection-container {
+    position: absolute;
+    top: 358px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.number-scroll-area {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    align-items: center;
+    width: 375px;
+}
+
+.number-scroll-area::-webkit-scrollbar {
+    display: none;
+}
+
+.selection-number-item {
+    flex-shrink: 0;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: drop-shadow(2px 2px 7.5px rgba(22, 22, 22, 0.25));
+    scroll-snap-align: center;
+}
+
+.selection-number-item:hover {
+    transform: scale(1.05);
+}
+
+.selection-number-item.selected {
+    transform: scale(1.1);
+    filter: drop-shadow(4px 4px 10px rgba(22, 22, 22, 0.4));
+}
+
+/* 중앙에 가까운 숫자 (메인) */
+.selection-number-item.center {
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+}
+
+/* 중앙에서 멀리 떨어진 숫자 (작고 투명) */
+.selection-number-item.side {
+    width: 100px;
+    height: 100px;
+    opacity: 0.7;
+}
+
+.selection-number-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.selection-button-container {
+    position: absolute;
+    top: 644px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.selection-button {
+    width: 201px;
+    height: 75px;
+    background: linear-gradient(135deg, #ff6b35, #ff8c42);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 37px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 1px #ffcc00;
+    transition: all 0.3s ease;
+}
+
+.selection-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 0px 8px 2px #ffcc00;
+}
+
+.selection-button:active {
+    transform: translateY(0);
+    box-shadow: 0px 0px 3px 1px #ffcc00;
+}
+
+/* 반응형 디자인 - 작은 모바일 화면 */
+@media (max-width: 375px) {
+    .logo-container {
+        left: calc(50% - 8px);
+        top: 200px;
+    }
+    
+    .logo-image {
+        width: 200px;
+    }
+    
+    .number-image {
+        width: 65px;
+        height: 65px;
+    }
+    
+    .start-button {
+        width: 180px;
+        height: 65px;
+        font-size: 32px;
+    }
+    
+    .selection-title {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .selection-number-item {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .selection-number-item.center {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .selection-number-item.side {
+        width: 75px;
+        height: 75px;
+    }
+    
+    .selection-button {
+        width: 180px;
+        height: 65px;
+        font-size: 32px;
+    }
+}
+
+/* 반응형 디자인 - 매우 작은 화면 */
+@media (max-width: 320px) {
+    .logo-container {
+        left: calc(50% - 6px);
+        top: 170px;
+    }
+    
+    .logo-image {
+        width: 170px;
+    }
+    
+    .number-image {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .start-button {
+        width: 160px;
+        height: 55px;
+        font-size: 28px;
+    }
+    
+    .selection-title {
+        font-size: 18px;
+        margin-bottom: 25px;
+    }
+    
+    .selection-number-item {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .selection-number-item.center {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .selection-number-item.side {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .selection-button {
+        width: 160px;
+        height: 55px;
+        font-size: 28px;
+    }
+}
+
+/* 더미 아이템 크기 고정 */
+.selection-number-item.dummy {
+    width: 65px;
+    height: 65px;
+}
+
+/* 맞출 숫자 개수 선택 팝업 */
+.number-count-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}
+
+.popup-content {
+    position: relative;
+    background-color: white;
+    border: 5px solid #ff941a;
+    border-radius: 20px;
+    width: 309px;
+    height: 530px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 23.4px;
+    font-weight: 700;
+    color: #ff941a;
+    text-align: center;
+    white-space: nowrap;
+    position: absolute;
+    top: 40px;
+}
+
+.popup-number-selection-container {
+    width: 100%;
+    height: 240px;
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 80px;
+}
+
+.popup-number-scroll-area {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    align-items: center;
+    width: 299px;
+}
+
+.popup-number-scroll-area::-webkit-scrollbar {
+    display: none;
+}
+
+.popup-number-item {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    background: transparent;
+    filter: drop-shadow(2px 2px 7.5px rgba(22, 22, 22, 0.25));
+    scroll-snap-align: center;
+}
+
+.popup-number-item.center {
+    width: 150px;
+    height: 150px;
+}
+
+.popup-number-item.side {
+    width: 80px;
+    height: 80px;
+    opacity: 0.7;
+}
+
+.popup-number-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.popup-number-item.dummy {
+    width: 50px;
+    height: 50px;
+}
+
+.count-button {
+    width: 175px;
+    height: 60px;
+    background: linear-gradient(135deg, #ff6b35, #ff8c42);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 1px #ffcc00;
+    transition: all 0.3s ease;
+}
+
+.count-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 0px 8px 2px #ffcc00;
+}
+
+.count-button:active {
+    transform: translateY(0);
+    box-shadow: 0px 0px 3px 1px #ffcc00;
+}
+
+.count-button:disabled {
+    background: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.count-button.selected {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    box-shadow: 0px 0px 8px 2px #4CAF50;
+}
+
+.popup-button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    position: absolute;
+    bottom: 15px;
+}
+
+.popup-confirm-button {
+    width: 201px;
+    height: 75px;
+    background: linear-gradient(135deg, #ff6b35, #ff8c42);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 1px #ffcc00;
+    transition: all 0.3s ease;
+}
+
+.popup-confirm-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 0px 8px 2px #ffcc00;
+}
+
+.popup-confirm-button:active {
+    transform: translateY(0);
+    box-shadow: 0px 0px 3px 1px #ffcc00;
+}
+
+.popup-reselect-button {
+    width: 201px;
+    height: 75px;
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 1px #81C784;
+    transition: all 0.3s ease;
+}
+
+.popup-reselect-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 0px 8px 2px #81C784;
+}
+
+.popup-reselect-button:active {
+    transform: translateY(0);
+    box-shadow: 0px 0px 3px 1px #81C784;
+}
+
+/* 게임 플레이 화면 */
+.game-play-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.game-question-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 50.679px;
+    color: #ff941a;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 60.592px;
+    margin-top: -250px;
+}
+
+.game-number-scroll-container {
+    position: absolute;
+    left: 50%;
+    top: 384px;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+
+.game-number-scroll-area {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    height: 100%;
+    transition: transform 0.1s ease-out;
+}
+
+.game-number-item {
+    flex-shrink: 0;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.game-number-item.center {
+    width: 200px;
+    height: 200px;
+    transform: scale(1.2);
+}
+
+.game-number-item.side {
+    width: 100px;
+    height: 100px;
+    opacity: 0.6;
+}
+
+.game-number-item.dummy {
+    width: 75px;
+    height: 75px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.game-number-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    pointer-events: none;
+}
+
+/* 당첨 번호 오버레이 */
+.winning-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.winning-number-display {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.winning-number-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    pointer-events: none;
+}
+
+/* 최종 결과 화면 */
+.final-result-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.final-popup-container {
+    position: relative;
+    width: 309px;
+    height: 522px;
+    background-color: white;
+    border: 5px solid #ff941a;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+.final-congratulations {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.congratulations-text {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 41px;
+    color: #ff941a;
+    margin-bottom: 20px;
+}
+
+.winning-numbers-label {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 26px;
+    color: #ff941a;
+    margin-top: 20px;
+}
+
+.final-winning-numbers {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    width: 300px;
+}
+
+
+.final-winning-number {
+    width: 81px;
+    height: 81px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.final-winning-number img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.3));
+}
+
+.final-button-container {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.restart-button {
+    width: 201px;
+    height: 75px;
+    background: linear-gradient(135deg, #ff6b35, #ff8c42);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 37px;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 1px #ffcc00;
+    transition: all 0.3s ease;
+}
+
+.restart-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 0px 10px 2px #ffcc00;
+}
+
+.restart-button:active {
+    transform: translateY(0);
+    box-shadow: 0px 0px 5px 1px #ffcc00;
+}

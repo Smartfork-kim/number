@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 맞추기 게임</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@400&family=Freeman&family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 메인 화면 -->
+    <div class="main-screen" id="mainScreen">
+            <!-- 로고 -->
+            <div class="logo-container">
+                <img src="Logo.png" alt="숫자 맞추기 게임 로고" class="logo-image">
+            </div>
+            
+            
+            <!-- 숫자 이미지들 - 피그마 디자인에 맞는 개별 배치 -->
+            <img src="number_img/Frame 1.png" alt="1" class="number-image" style="left: 12px; top: 419px;">
+            <img src="number_img/Frame 12.png" alt="12" class="number-image" style="left: 91px; top: 419px;">
+            <img src="number_img/Frame 25.png" alt="25" class="number-image" style="left: 170px; top: 419px;">
+            <img src="number_img/Frame 38.png" alt="38" class="number-image" style="left: 249px; top: 419px;">
+            <img src="number_img/Frame 45.png" alt="45" class="number-image" style="left: 328px; top: 419px;">
+            
+            <!-- 게임 시작 버튼 -->
+            <div class="button-container">
+                <button class="start-button" id="startButton" onclick="startGame()">게임 시작</button>
+            </div>
+        </div>
+        
+        <!-- 숫자 선택 화면 -->
+        <div class="number-selection-screen" id="numberSelectionScreen" style="display: none;">
+            <!-- 제목 -->
+            <div class="selection-title">맞출 숫자 범위를 선택해 주세요</div>
+            
+            <!-- 숫자 선택 영역 -->
+            <div class="number-selection-container">
+                <div class="number-scroll-area" id="numberScrollArea">
+                    <!-- 숫자 이미지들이 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+            
+            <!-- 선택 완료 버튼 (숫자 2개 이상 선택 시에만 표시) -->
+            <div class="selection-button-container" id="selectionButtonContainer" style="display: none;">
+                <button class="selection-button" id="selectionButton">선택 완료</button>
+            </div>
+        </div>
+        
+        <!-- 맞출 숫자 개수 선택 팝업 -->
+        <div class="number-count-popup" id="numberCountPopup" style="display: none;">
+            <div class="popup-overlay"></div>
+            <div class="popup-content">
+                <h3 class="popup-title">숫자를 몇 개 맞출 건가요?</h3>
+                <div class="popup-number-selection-container">
+                    <div class="popup-number-scroll-area" id="popupNumberScrollArea">
+                        <!-- 숫자 이미지들이 여기에 동적으로 추가됩니다 -->
+                    </div>
+                </div>
+                <div class="popup-button-container">
+                    <button class="popup-confirm-button" id="popupConfirmButton">선택 완료</button>
+                    <button class="popup-reselect-button" id="popupReselectButton">숫자 다시 선택</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 게임 플레이 화면 -->
+        <div class="game-play-screen" id="gamePlayScreen" style="display: none;">
+            <div class="game-question-text">당첨 번호는??</div>
+            <div class="game-number-scroll-container">
+                <div class="game-number-scroll-area" id="gameNumberScrollArea">
+                    <!-- 숫자 이미지들이 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+            
+            <!-- 당첨 번호 오버레이 -->
+            <div class="winning-overlay" id="winningOverlay" style="display: none;">
+                <div class="winning-number-display" id="winningNumberDisplay">
+                    <!-- 당첨 번호 이미지가 여기에 표시됩니다 -->
+                </div>
+            </div>
+        <!-- 최종 결과 화면 -->
+        <div class="final-result-screen" id="finalResultScreen" style="display: none;">
+            <div class="final-popup-container">
+                <div class="final-congratulations">
+                    <div class="congratulations-text">축하합니다!!</div>
+                    <div class="winning-numbers-label">당첨 번호</div>
+                </div>
+                
+                <div class="final-winning-numbers" id="finalWinningNumbers">
+                    <!-- 당첨 번호들이 동적으로 추가됩니다 -->
+                </div>
+                
+                <div class="final-button-container">
+                    <button class="restart-button" id="restartButton">다시 하기</button>
+                </div>
+            </div>
+        </div>
+    <audio id="rollingSound" preload="auto">
+        <source src="sound_effect/rolling.mp3" type="audio/mpeg">
+        <source src="sound_effect/rolling.wav" type="audio/wav">
+    </audio>
+    
+    <audio id="buttonSound" preload="auto">
+        <source src="sound_effect/button.mp3" type="audio/mpeg">
+        <source src="sound_effect/button.wav" type="audio/wav">
+    </audio>
+    
+    <audio id="chooseSound" preload="auto">
+        <source src="sound_effect/choose.mp3" type="audio/mpeg">
+        <source src="sound_effect/choose.wav" type="audio/wav">
+    </audio>
+    
+    <audio id="chooseNumberSound" preload="auto" loop>
+        <source src="sound_effect/choose number.mp3" type="audio/mpeg">
+        <source src="sound_effect/choose number.wav" type="audio/wav">
+    </audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>
