@@ -803,8 +803,9 @@ body {
 
 .final-popup-container {
     position: relative;
-    width: 309px;
-    height: 522px;
+    width: min(309px, 90vw);
+    height: min(522px, 75vh);
+    max-height: 600px;
     background-color: white;
     border: 5px solid #ff941a;
     border-radius: 20px;
@@ -813,6 +814,7 @@ body {
     justify-content: center;
     align-items: center;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
 }
 
 
@@ -824,22 +826,23 @@ body {
     text-align: center;
     width: 100%;
     white-space: nowrap;
+    padding: 0 10px;
 }
 
 .congratulations-text {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 700;
-    font-size: 41px;
+    font-size: min(41px, 9vw);
     color: #ff941a;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .winning-numbers-label {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
-    font-size: 26px;
+    font-size: min(26px, 6vw);
     color: #ff941a;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .final-winning-numbers {
@@ -850,18 +853,23 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
-    width: 300px;
+    align-items: center;
+    gap: min(20px, 3vw);
+    width: 90%;
+    max-width: 280px;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 300px;
 }
 
 
 .final-winning-number {
-    width: 81px;
-    height: 81px;
+    width: min(81px, 18vw);
+    height: min(81px, 18vw);
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .final-winning-number img {
@@ -873,21 +881,21 @@ body {
 
 .final-button-container {
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .restart-button {
-    width: 201px;
-    height: 75px;
+    width: min(201px, 70vw);
+    height: min(75px, 12vh);
     background: linear-gradient(135deg, #ff6b35, #ff8c42);
     border: none;
     border-radius: 20px;
     color: white;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 700;
-    font-size: 37px;
+    font-size: min(37px, 8vw);
     cursor: pointer;
     box-shadow: 0px 0px 5px 1px #ffcc00;
     transition: all 0.3s ease;
@@ -901,4 +909,40 @@ body {
 .restart-button:active {
     transform: translateY(0);
     box-shadow: 0px 0px 5px 1px #ffcc00;
+}
+
+/* 최종 결과 화면 반응형 (아이폰 XR 등) */
+@media (max-width: 414px) {
+    .final-popup-container {
+        width: 85vw;
+        height: 70vh;
+        padding: 15px;
+    }
+    
+    .congratulations-text {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+    
+    .winning-numbers-label {
+        font-size: 22px;
+        margin-top: 10px;
+    }
+    
+    .final-winning-numbers {
+        gap: 15px;
+        max-width: 250px;
+        max-height: 250px;
+    }
+    
+    .final-winning-number {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .restart-button {
+        width: 180px;
+        height: 65px;
+        font-size: 32px;
+    }
 }
